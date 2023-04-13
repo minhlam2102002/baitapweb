@@ -1,47 +1,72 @@
-!<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <title>Title</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+  <title>Nhóm 9</title>  
+  <h1>MSSV: 20120067</h1>
 </head>
 
 <body>
-  <header>
-    <nav class="nav justify-content-center  ">
-      <a class="nav-link active" href="ex01.html" aria-current="page">Check/Uncheck</a>
-      <a class="nav-link" href="/ex02.html">Active Icon Image</a>
-      <a class="nav-link" href="/ex03.html">Disable Link</a>
-      <a class="nav-link" href="/ex04.html">Password</a>
-      <a class="nav-link" href="/ex05.html">Filter List</a>
-      <a class="nav-link" href="/ex06.html">Add Item</a>
-      <a class="nav-link" href="/ex07.html">Remove Item</a>
-      <a class="nav-link" href="/ex08.html">Edit Item</a>
-      <a class="nav-link" href="/ex09.html">Fetch Data</a>
-      <a class="nav-link" href="/ex10.html">Pagination</a>
-    </nav>
-  </header>
-  <main>
+  <div>
+    <ul id="itemList">
+      <li><span>20120000</span> <button class="editBtn">Edit</button></li>
+      <li><span>20120018</span> <button class="editBtn">Edit</button></li>
+      <li><span>20120067</span> <button class="editBtn">Edit</button></li>
+      <li><span>20120304</span> <button class="editBtn">Edit</button></li>
+      <li><span>Last Night</span> <button class="editBtn">Edit</button></li>
+      <li><span>Kill Bill</span> <button class="editBtn">Edit</button></li>
+      <li><span>D*e For You</span> <button class="editBtn">Edit</button></li>
+      <li><span>Calm Down</span> <button class="editBtn">Edit</button></li>
+      <li><span>Anti Hero</span> <button class="editBtn">Edit</button></li>
+      <li><span>As It Was</span> <button class="editBtn">Edit</button></li>
+      <li><span>I'm Good(Blue)</span> <button class="editBtn">Edit</button></li>
+      <li><span>Chúng ta dont belong with nhau</span> <button class="editBtn">Edit</button></li>
+    </ul>
+  </div>
 
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+  <script>
+  var editBtns = document.getElementsByClassName('editBtn');
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
+  for (var i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', editItem);
+  }
+
+  function editItem() {
+    var item = this.parentNode;
+    
+    var span = item.querySelector('span');
+    
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.value = span.innerHTML;
+    
+    item.replaceChild(input, span);
+    
+    this.innerHTML = 'Save';
+    
+    input.addEventListener('keydown', function(event) {
+      if (event.keyCode === 13) {
+        saveItem(item, input.value);
+      }
+    });
+    
+    this.addEventListener('click', function() {
+      saveItem(item, input.value);
+    });
+  }
+
+  function saveItem(item, newText) {
+    var input = item.querySelector('input');
+    
+    var span = document.createElement('span');
+    span.innerHTML = newText;
+    
+    item.replaceChild(span, input);
+    
+    var editBtn = item.querySelector('.editBtn');
+    editBtn.innerHTML = 'Edit';
+  }
+</script>
 </body>
 
 </html>
