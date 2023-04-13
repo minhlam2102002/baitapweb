@@ -35,26 +35,30 @@
   </header>
   <main>
     <h1 class="text-center">Password</h1>
-    <div class="container">
-      <div class="mb-3">
-        <label for="password" class="form-label">
-          Password
-        </label>
-        <input type="password" class="form-control" name="password" id="password">
-      </div>
-      <div class="mb-3">
-        <label for="confirmPassword" class="form-label">
-          Confirm Password
-        </label>
-        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label" for="showPassword">
-          Show Passwords
-        </label>
-        <input type="checkbox" class="form-check-input" id="showPassword" value="true">
-      </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+    <div class="container-fluid">
+      <form>
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            Password
+          </label>
+          <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">
+            Confirm Password
+          </label>
+          <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label" for="showPassword">
+            Show Passwords
+          </label>
+          <input type="checkbox" class="form-check-input" id="showPassword" onclick="myShowPassword()">
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
     </div>
   </main>
   <footer>
@@ -70,13 +74,14 @@
     </script>
 
   <script>
-    document.querySelectorAll('main a').forEach(item => {
-      item.onclick = (e) => {
-        e.preventDefault();
-        document.querySelectorAll('main a').forEach(link => link.classList.remove('disabled'));
-        item.classList.add('disabled');
-      }
-    });
+    function myShowPassword() {
+      let showPasswords = document.getElementById("showPassword");
+      if (showPasswords.checked) {
+        document.querySelectorAll('input[type=password]').forEach(item => { item.type = 'text' });
+      } else {
+        document.querySelectorAll('input[type=password]').forEach(item => { item.type = 'password' });
+      };
+    };
   </script>
 </body>
 

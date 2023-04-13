@@ -72,12 +72,12 @@
 
   <script>
     function myCheck() {
-      document.querySelectorAll('input').forEach(item => {
+      document.querySelectorAll('input[type=checkbox]').forEach(item => {
         item.checked = true;
       });
     };
     function myUncheck() {
-      document.querySelectorAll('input').forEach(item => {
+      document.querySelectorAll('input[type=checkbox]').forEach(item => {
         item.checked = false;
       });
     };
